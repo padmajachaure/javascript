@@ -10,7 +10,7 @@ console.log(balance.toString().length);
 const otherNumber = 451.00
 // console.log(otherNumber.toPrecision(4));
 
-const rupee = 1000000
+const rupee = 1000000000
 // console.log(rupee.toLocaleString('en-IN'));
 
 
