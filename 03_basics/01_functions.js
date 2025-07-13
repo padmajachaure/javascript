@@ -62,4 +62,21 @@ function handleArray(AnyArray){
     return AnyArray[2]
 }
 
-console.log(handleArray(myArray));
+// console.log(handleArray(myArray));
+
+
+
+
+
+addOne(5)
+
+function addOne(num){
+    return num +1;
+}
+
+
+// addTwo(2)  //this is raise a error because we hold a function in a variable 
+const addTwo = function(num){
+        return num+2
+}
+
