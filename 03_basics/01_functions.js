@@ -80,3 +80,10 @@ const addTwo = function(num){
         return num+2
 }
 
+
+
+
+function show() {
+  console.log(arguments);
+}
+show(1, 2, 3); // [1, 2, 3]
