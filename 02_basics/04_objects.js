@@ -28,7 +28,7 @@ const obj3 = {5:"e",6:"f"}
 // const obj4 =Object.assign({}, obj1, obj2, obj3)
 // console.log(obj4);
 
-const obj4 = {...obj1 , ...obj2 , ...obj3}
+// const obj4 = {...obj1 , ...obj2 , ...obj3} //spread operator
 // console.log(obj4);
 
 
@@ -79,6 +79,12 @@ console.log(couInst);
 
 
 
+const emptyObj = {}
+
+if(Object.keys(emptyObj).length === 0){
+    console.log("Object is empty");
+    
+}
 
 
 
