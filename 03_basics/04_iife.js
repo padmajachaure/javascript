@@ -13,8 +13,3 @@
 })("Padmaja")
 
 //note : global variable polution ki problem se bachane ke liye we used IIFE function
-
-
-
-
-
