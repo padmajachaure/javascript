@@ -5,14 +5,46 @@
     <meta charset="UTF-8">
     <title>DOM Learning</title>
 </head>
+<style>
+    .bg-black {
+        background-color: black;
+        color: white;
+    }
+</style>
 
-<body>
-    <div class="bg-black">
-        <h1 class="heading">DOM learning with Chai aur code</h1>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim officia cupiditate illum aut eaque minima fugit
-            culpa maiores, magni, quis itaque necessitatibus ab minus tempore numquam nihil animi, mollitia dignissimos.
-        </p>
+<body class="bg-black">
+    <div class="parent">
+        <div class="day">Monday</div>
+        <div class="day">Tuesday</div>
+        <div class="day">Wednsday</div>
+        <div class="day">Thursday</div>
     </div>
 </body>
+<script>
+    // const parent = document.querySelector('.parent')
+    // console.log(parent);
+    // console.log(parent.children);
+    // console.log(parent.children[1].innerHTML);
+
+    // for (let i = 0; i < parent.children.length; i++) {
+    //      console.log(parent.children[i].innerHTML)
+        
+    // }
+
+    // parent.children[0].style.color = 'red'
+    // console.log(parent.firstElementChild)
+    // console.log(parent.lastElementChild);
+    
+    // const dayOne = document.querySelector('.day')
+    // // console.log(dayOne);
+    // console.log(dayOne.parentElement);
+
+    console.log("nodes : " , parent.childNodes);
+    
+    
+    
+    
+    
+</script>
 
 </html>
