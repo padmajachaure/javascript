@@ -23,11 +23,8 @@ from.addEventListener('submit', function(e){
     else if (bmi >= 18.5 && bmi < 24.9) {
         results.innerHTML += '<br>You have a normal weight.';
     }
-    else if (bmi >= 25 && bmi < 29.9) {
+    else if(bmi>24.9){
         results.innerHTML += '<br>You are overweight.';
-    }
-    else {
-        results.innerHTML += '<br>You are obese.';
     }
 });
 
