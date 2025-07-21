@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="background-color: black; 
+color: white;">
+<ul class="language">
+    <li>JavaScript</li>
+</ul>
+
+</body>
+<script>
+    //Add
+    function addLanguage(languageName){
+        const li = document.createElement('li')
+        li.innerHTML = `${languageName}`
+        document.querySelector('.language').appendChild(li)
+    }
+    addLanguage("Python")
+
+    //same as above function but create  a element way of aptimize
+
+    function addLangugageOtimize(language){
+        const li = document.createElement('li')
+        li.appendChild(document.createTextNode(language))
+        document.querySelector('.language').appendChild(li)
+    }
+    addLangugageOtimize("Cpp")
+    addLangugageOtimize('PHP')
+
+    //Edit
+
+    const secondLang = document.querySelector("li:nth-child(2)")
+    // console.log(secondLang);
+    const newEle = document.createElement('li')
+    newEle.textContent = 'Mojo'
+    secondLang.replaceWith(newEle)
+
+    //edit
+    const firstLang = document .querySelector("li:first-child")
+    firstLang.outerHTML= '<li>Typescript</li>'
+
+    // delete
+    const lastLang = document.querySelector("li:nth-child(4)")
+    lastLang.remove()
+
+</script>
+
+</html>
