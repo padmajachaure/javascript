@@ -5,7 +5,7 @@ console.log(randomNum);
 const submit = document.querySelector('#subt');
 const input = document.querySelector('#guessField');
 const guessSlot = document.querySelector('.guesses');
-const result = document.querySelector('.result');
+// const result = document.querySelector('.result');
 const remaining = document.querySelector('.lastResult');
 const lowOrHi = document.querySelector('.lowOrHi');
 const startOver = document.querySelector('.resultParas');
@@ -14,11 +14,12 @@ const p = document.createElement('p');
 
 let guessCount = 1;
 let prevGusses = [];
+let maxGuesses = 10;
 
 let playGame = true;
 
 if(playGame){
-    submit.addEventListener('click ' , function(e) {
+    submit.addEventListener('click' , function(e) {
         e.preventDefault();
         let guesse = parseInt(input.value);
         console.log(guesse);
@@ -35,11 +36,11 @@ function validateGuess(guesse) {
             displayMessage('You have already guessed that number. Try a different one.');
             return;
         } else {
-            prevGusses.push(guesse);
-            if(numGusses === 11){
+              prevGusses.push(guesse);
+            if(guessCount === 10){
                 displayGuesses(guesse);
                 displayMessage('Game Over! the number was ' + randomNum);
-                endGame();
+                setGameOver();
                 return;
             }else {
                 displayGuesses(guesse);
@@ -48,39 +49,65 @@ function validateGuess(guesse) {
             
         }
     }
-
 function checkGuess(guesse) {
-    if(guesse === randomNum) {
-        displayMessage('Congratulations! You got it right!');
-        endGame('You win!');
-    } else if(guesse < randomNum) {
-        displayMessage('Your guess is too low!');
-        lowOrHi.textContent = 'Last guess was too low!';
+    if (guesse === randomNum) {
+        displayMessage('🎉 Congratulations! You got it right!');
+        setGameOver();
     } else {
-        displayMessage('Your guess is too high!');
-        lowOrHi.textContent = 'Last guess was too high!';
+        if (guessCount === maxGuesses) {
+            displayMessage(`💀 Game Over! The number was ${randomNum}`);
+            setGameOver();
+        } else {
+            const hint = guesse < randomNum ? 'too low!' : 'too high!';
+            displayMessage(`Your guess is ${hint}`);
+            lowOrHi.textContent = `Last guess was ${hint}`;
+        }
     }
 }
+
 
 function displayGuesses(guesse) {
     input.value = '';
-    guessSlot.innerHTML += ` ${guesse} `;
+    guessSlot.innerHTML += ` ${guesse}`;
     guessCount++;
     input.focus();
-    remaining.textContent = 11 - guessCount;
-    
-    if(guessCount === 11) {
-        endGame('Game Over! The number was ' + randomNum);
-    }
-   
+    remaining.textContent = maxGuesses - (guessCount - 1);
 }
+
 
 function displayMessage(message){
-    lowOrHi.innerHTML = `<h2>${message}</h2>`;
-
-
+    lowOrHi.innerHTML= ` ${message} `;
 }
 
-function endGame(message) {
-    //  
+function setGameOver() {
+    input.disabled = true;
+    submit.disabled = true;
+
+    const resetButton = document.createElement('button');
+    resetButton.textContent = '🔄 Start New Game';
+    resetButton.setAttribute('id', 'reset');
+    document.body.appendChild(resetButton);
+
+    resetButton.addEventListener('click', resetGame);
 }
+
+function resetGame() {
+    guessCount = 1;
+    prevGusses = [];
+    input.disabled = false;
+    submit.disabled = false;
+    input.value = '';
+    guessSlot.textContent = '';
+    remaining.textContent = maxGuesses;
+    lowOrHi.textContent = '';
+    displayMessage('');
+
+    const resetBtn = document.getElementById('reset');
+    if (resetBtn) resetBtn.remove();
+
+    randomNum = parseInt(Math.random() * 100 + 1);
+    console.log('New number:', randomNum);
+}
+
+
+
