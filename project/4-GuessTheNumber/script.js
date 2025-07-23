@@ -1,4 +1,4 @@
-const randomNum = parseInt(Math.random() * 100 + 1);
+let randomNum = parseInt(Math.random() * 100 + 1);
 console.log(randomNum);
 
 
@@ -92,6 +92,7 @@ function setGameOver() {
 }
 
 function resetGame() {
+    randomNum = parseInt(Math.random() * 100 + 1);
     guessCount = 1;
     prevGusses = [];
     input.disabled = false;
@@ -106,8 +107,5 @@ function resetGame() {
     if (resetBtn) resetBtn.remove();
 
     randomNum = parseInt(Math.random() * 100 + 1);
-    console.log('New number:', randomNum);
+    // console.log('New number:', randomNum);
 }
-
-
-
